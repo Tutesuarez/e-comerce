@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "calibri";
+  src: url("../src/assets/fonts/calibri.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "MADE TOMMY ExtraBold";
+  src: url("../src/assets/fonts/MADE\ TOMMY\ ExtraBold.otf");
+  font-style: normal;
+  font-weight: 700;
+}
+
+/*----   Nav Bar -----*/
+
+.nav-link{
+  font-family: "calibri";
+  font-size: 1.2rem;
+}
+
+.nav-link:hover{
+  font-weight: 700;
+  background-color: rgba(255,255,255, 0.2);
+  border-radius: 15px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.title{
+  font-family: "MADE TOMMY ExtraBold";
+  color: #242424;
+  font-size: 80px;
+}
+
+
