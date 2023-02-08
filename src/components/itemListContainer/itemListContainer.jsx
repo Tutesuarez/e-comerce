@@ -1,17 +1,27 @@
 import '../itemListContainer/itemListContainer.css';
 import { useState, useEffect } from "react";
 import { mFetch } from "../../mFetch";
+import { Link, useParams} from "react-router-dom"
 
 const ItemListContainer = ({ saludo }) => {
     const [products, setProducts] = useState([]);
     const [loanding, setLoading] = useState(true);
+    const {idCategoria}= useParams();
 
     useEffect(() => {
-        mFetch()
-            .then(resp => setProducts(resp))
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
-    }, []);
+        if (idCategoria){
+            mFetch()
+                .then(resp => setProducts(resp.filter(prod=>prod.categoria===idCategoria)))
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+
+        }else{
+            mFetch()
+                .then(resp => setProducts(resp))
+                .catch(err => console.log(err))
+                .finally(() => setLoading(false))
+        }
+    }, [idCategoria]);
 
     return (
         <>
@@ -30,7 +40,7 @@ const ItemListContainer = ({ saludo }) => {
                                             <p>${prod.precio}</p>
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-dark" onclick="filterProductDetail(${id})">Details</a>
+                                                    <Link class="btn btn-dark" to={`/detail/${prod.id}`}>Details</Link>
                                                 </div>
                                                 <a className="btn btn-outline-dark" onClick="addProductToBasket{prd.id})">Add</a>
                                             </div>

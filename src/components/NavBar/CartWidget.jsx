@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom"
+
 const Carrito=()=>{
     return(
         <>
         <ul className="navbar-nav ms-auto">
                             <li className="nav-item d-flex">
-                                <a className=" nav-link text-white ">
+                                <Link to='/Cart' className=" nav-link text-white ">
                                     <img src="src/assets/img/001-comprar.png" alt="carrito-compra" />
-                                </a>
+                                </Link>
                                 <p className="pe-2 nav text-white align-items-center">3</p>
                             </li>
                             <li className="nav-item">
-                                <a className=" nav-link text-white me-3" aria-current="page" href="#">Login</a>
+                                <Link className=" nav-link text-white me-3" aria-current="page" href="#">Login</Link>
                             </li>
         </ul>
         </>

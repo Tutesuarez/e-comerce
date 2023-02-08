@@ -1,14 +1,16 @@
+
+import { Link} from "react-router-dom"
 import CartWidget from "./CartWidget"
 
 
-const NavBar = () => {
+const Navbar = () => {
     return(
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div className="container-fluid ">
-                    <a href="#">
+                    <Link to='/home'>
                         <img src="src/assets/img/LOGO.svg" alt="Logo Fashion" />
-                    </a>
+                    </Link>
                     <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -16,19 +18,19 @@ const NavBar = () => {
                     <div className="collapse navbar-collapse text-uppercase" id="navbarSupportedContent">
                         <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
                             <li className="nav-item ">
-                                <a className="nav-link text-white active me-3" aria-current="page" href="#">Home</a>
+                                <Link className="nav-link text-white active me-3" aria-current="page"  to='/home'>Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white me-3" href="#">Women</a>
+                                <Link className="nav-link text-white me-3" to='/categoria/woman'>Women</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white me-3" href="#">Men</a>
+                                <Link className="nav-link text-white me-3" to='/categoria/man'>Men</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white me-3" href="#">Kids</a>
+                                <Link className="nav-link text-white me-3"  to='/categoria/kids' >Kids</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-white me-3" href="#">Contact</a>
+                                <Link className="nav-link text-white me-3" >Contact</Link>
                             </li>
                         </ul>
                         <CartWidget/>
@@ -38,4 +40,4 @@ const NavBar = () => {
         </>
     )
 }
-export default NavBar
+export default Navbar
