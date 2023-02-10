@@ -1,9 +1,11 @@
 import '../itemListContainer/itemListContainer.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { mFetch } from "../../mFetch";
 import { Link, useParams} from "react-router-dom"
+import Spinner from './loadingSpinner';
 
-const ItemListContainer = ({ saludo }) => {
+
+const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [loanding, setLoading] = useState(true);
     const {idCategoria}= useParams();
@@ -26,10 +28,10 @@ const ItemListContainer = ({ saludo }) => {
     return (
         <>
             {loanding ?
-                <h2>Loading...</h2> // Cargar un spinner 
+                    <Spinner/>
                 :
                 <div className="container-fluid cards__section vw-100"> 
-                    <div className="cards__container__wrap row row-cols-1 row-cols-sm-2 row-cols-lg-4 mt-5 pt-5 m-auto g-3 mb-4">{  // Esto pasarlo a una funcion(componente) aparte.
+                    <div className="cards__container__wrap row row-cols-1 row-cols-sm-2 row-cols-lg-4 mt-5 pt-5 m-auto g-3 mb-4">{ 
                             products.map(prod =>
                                 <div key={prod.id} className="col">
                                     <div className="card m-auto shadow-sm">

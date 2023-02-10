@@ -2,13 +2,14 @@ import "../itemDetailContainer/itemDetail.css";
 import { useEffect, useState } from "react"
 import { mFetch } from "../../mFetch";
 import { useParams } from "react-router-dom"
+import Spinner from "../itemListContainer/loadingSpinner";
 
 export const ItemDetail = () => {
     const [product, setProduct] = useState([]);
     const [loanding, setLoading] = useState(true);
     const { idProducto } = useParams();
-
-    useEffect(() => {
+    const [quantity, setQuantity]= useState('');
+   useEffect(() => {
         if (idProducto) {
             mFetch()
                 .then(resp => setProduct(resp.find(prod => prod.id === idProducto)))
@@ -21,12 +22,12 @@ export const ItemDetail = () => {
                 .finally(() => setLoading(false))
         }
     }, [idProducto])
-    console.log(product);
+    console.log(quantity);
 
     return (
         <>
             {loanding ?
-                <h2>Loading...</h2> // Cargar un spinner 
+                <Spinner/>
                 :
                     <div className="container-fluid row vw-100">
                         <div className="col d-flex justify-content-lg-end me-lg-1 justify-content-center">
@@ -38,17 +39,22 @@ export const ItemDetail = () => {
                                 <p>{product.descripcion}</p>
                                 <p>${product.precio}</p>
                             </div>
-                            <div>
+                            <form onSubmit={ ev=>{
+                                ev.preventDefault();
+                                setQuantity(ev.target.quantity.value);
+                                }}
+                            >
                                 <p className="mb-0" >Cantidad</p>
-                                <input type='number' min='1'></input>
-                            </div>
+                                <input type='number' name='quantity' min='1'/>
+                            </form>
                             <div className="mt-3">
-                                <button className="btn btn-dark me-1">BUY</button>
-                                <button className="btn btn-outline-dark me-1">ADD TO BASKET</button>
+                                <button type="submit" className="btn btn-dark me-1">BUY</button>
+                                <button type="submit" className="btn btn-outline-dark me-1">ADD TO BASKET</button>
                             </div>
                         </div>
                     </div>
         }
         </>
     )
+    
 }
