@@ -9,7 +9,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div className="container-fluid ">
                     <Link to='/home'>
-                        <img src="src/assets/img/LOGO.svg" alt="Logo Fashion" />
+                        <img src="/src/assets/img/LOGO.svg" alt="Logo Fashion" />
                     </Link>
                     <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -28,9 +28,6 @@ const Navbar = () => {
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link text-white me-3"  to='/categoria/kids' >Kids</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link text-white me-3" >Contact</Link>
                             </li>
                         </ul>
                         <CartWidget/>

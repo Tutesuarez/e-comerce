@@ -29,7 +29,6 @@ const ItemListContainer = ({ saludo }) => {
                 <h2>Loading...</h2> // Cargar un spinner 
                 :
                 <div className="container-fluid cards__section vw-100"> 
-                    <h1>Titulo de seccion</h1>
                     <div className="cards__container__wrap row row-cols-1 row-cols-sm-2 row-cols-lg-4 mt-5 pt-5 m-auto g-3 mb-4">{  // Esto pasarlo a una funcion(componente) aparte.
                             products.map(prod =>
                                 <div key={prod.id} className="col">
