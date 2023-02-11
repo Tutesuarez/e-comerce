@@ -1,0 +1,25 @@
+.detail__container__description .detail-name-product{
+    font-family: 'MADE TOMMY ExtraBold';
+}
+
+.detail__container__description .detail-desciption{
+    font-family: 'calibri';
+    font-size: 16px;
+}
+
+.detail__container__description .detail-price{
+
+    font-family: 'calibri';
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(0,0,0,0.8)
+}
+
+.detail-lavel-quantity{
+    font-family: 'calibri';
+    font-size: 16px;
+}
+
+.detail__container__description input{
+    max-width: 100px;
+}

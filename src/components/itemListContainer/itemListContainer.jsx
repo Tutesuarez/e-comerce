@@ -43,7 +43,7 @@ const ItemListContainer = () => {
                                                 <div class="btn-group">
                                                     <Link class="btn btn-dark" to={`/detail/${prod.id}`}>Details</Link>
                                                 </div>
-                                                <a className="btn btn-outline-dark" onClick="addProductToBasket{prd.id})">Add</a>
+                                                <a className="btn btn-outline-dark" >Add</a>
                                             </div>
                                         </div>
                                     </div>
