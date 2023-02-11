@@ -1,18 +1,18 @@
 
-.cards__container__wrap{
+.cards_container_wrap{
     max-width: 1270px;
 }
 
-.cards__container__wrap .card{
+.card{
     width: 280px !important;
     height: auto;
 }
 
-.cards__container__wrap h3{
+.card-body h3{
     font-size: 20px;
 }
 
-.cards__container__wrap img{
+.card img{
     width: 100%;
     height: 186px;
     object-fit: cover;
