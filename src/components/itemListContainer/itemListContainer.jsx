@@ -1,32 +1,38 @@
-import { useState, useEffect} from "react";
-import { mFetch } from "../../mFetch";
-import {useParams} from "react-router-dom"
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"
 import Spinner from './loadingSpinner';
 import ItemList from './itemList';
+import {getFirestore, collection, getDocs, query, where} from 'firebase/firestore'
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [loanding, setLoading] = useState(true);
-    const {idCategoria}= useParams();
+    const {idCategory} = useParams();
 
-    useEffect(() => {
-        if (idCategoria){
-            mFetch()
-                .then(resp => setProducts(resp.filter(prod=>prod.categoria===idCategoria)))
-                .catch(err => console.log(err))
-                .finally(() => setLoading(false))
+    useEffect(()=>{
+        if(idCategory){
+            const db = getFirestore()
+            const queryCollection= collection(db, 'Products')
+            const queryFilter= query(queryCollection, where('category','==', idCategory))
+
+            getDocs(queryFilter)
+                .then(respCollection=> setProducts(respCollection.docs.map(prod=>({id:prod.id, ...prod.data()}))))
+                .catch(err=>console.error(err))
+                .finally(()=>setLoading(false))
 
         }else{
-            mFetch()
-                .then(resp => setProducts(resp))
-                .catch(err => console.log(err))
-                .finally(() => setLoading(false))
+            const db = getFirestore()
+            const queryCollection= collection(db, 'Products')
+            getDocs(queryCollection)
+                .then(respCollection=> setProducts(respCollection.docs.map(prod=>({id: prod.id, ...prod.data()}))))
+                .catch(err=>console.error(err))
+                .finally(()=>setLoading(false))
         }
-    }, [idCategoria]);
+    },[idCategory])
 
     return (
         <>
-            {loanding ? <Spinner/> : <ItemList products={products}/>}
+            {loanding ? <Spinner /> : <ItemList products={products} />}
         </>
     )
 }

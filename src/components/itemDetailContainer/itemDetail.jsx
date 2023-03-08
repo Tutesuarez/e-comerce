@@ -1,8 +1,37 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/cartContext";
 import "../itemDetailContainer/itemDetail.css";
-import { QuantityCounter } from "../quantityContainer/quantityContainer";
+import { ItemCount} from "../quantityContainer/quantityContainer";
+
+const DetailButtons= ()=> {
+
+    return (
+        <>
+        <div className="card border-0">
+        <div className="row mb-2 text-center">
+            <Link className="col px-0" to='/cart' >
+                <button className="btn btn-outline-dark" >Go to Cart</button>
+            </Link>
+            <Link className="col px-0" to='/' >
+                <button className="btn btn-outline-dark">Keep Shopping</button>
+            </Link>
+        </div>
+        </div>
+        </>
+    )
+}
+
 
 const ItemDetail = ({product}) => {
+    const{addToCart}=useCartContext()
+    const[isCount,setIsCount]=useState(true)
 
+
+function onAdd(quantity) {
+        addToCart({...product, quantity})
+        setIsCount(false)
+    }
     return (
         <div className="detail__container__wrap container-fluid row vw-100 p-0">
                     <div className="detail__container-img col-12 col-lg-6 d-flex justify-content-lg-end pe-md-3 justify-content-center">
@@ -10,15 +39,15 @@ const ItemDetail = ({product}) => {
                     </div>
                     <div className="detail__container__description col-12 col-lg-6 mt-2 mt-lg-0 ">
                         <div className="mt-3 mt-md-0">
-                            <h2 className="detail-name-product">{product.nombre}</h2>
-                            <p className="detail-desciption">{product.descripcion}</p>
-                            <p className="detail-price">${product.precio}</p>
+                            <h2 className="detail-name-product">{product.name}</h2>
+                            <p className="detail-desciption">{product.description}</p>
+                            <p className="detail-price">${product.price}</p>
                         </div>
-                        <QuantityCounter/>
-                        <div className="mt-3">
-                            <button type="submit" className="btn btn-dark me-1">BUY</button>
-                            <button type="submit" className="btn btn-outline-dark me-1">ADD TO BASKET</button>
-                        </div>
+                        {isCount?
+                                <ItemCount initial={1} stock={10}  onAdd={onAdd}/>
+                            :
+                                <DetailButtons/>
+                        }
                     </div>
                 </div>
     )

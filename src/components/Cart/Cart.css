@@ -1,0 +1,33 @@
+ .cart__list-img{
+    width: 200px !important;
+    height: auto;
+    
+}
+
+.cart__list-img .cart-img{
+    width: 100%;
+    height: 186px;
+    object-fit: cover;
+}
+
+.cart__list-name{
+    padding-top: 20px;
+    font-family: 'calibri';
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+}
+
+.cart__list-caract{
+    padding-top: 20px;
+    font-size: 18px;
+
+}
+
+.sub__total__bar{
+    font-size: 20px;
+}
+
+.cart__title{
+    font-family: 'MADE TOMMY ExtraBold';
+}

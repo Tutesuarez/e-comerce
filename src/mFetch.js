@@ -26,11 +26,11 @@ let products=[
 ];
 
 
-export const mFetch=()=>new Promise((res,rej)=>{
+export const mFetch=(id)=>new Promise((res,rej)=>{
     let status=true;
     if(status) {
         setTimeout(()=>{
-            res(products);
+            res(id ? products.find(prod=> id === prod.id): products);
         },1000)
     }else {
         rej('Error');

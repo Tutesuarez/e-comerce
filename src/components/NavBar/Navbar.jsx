@@ -21,13 +21,13 @@ const Navbar = () => {
                                 <Link className="nav-link text-white me-3"  to='/home'>Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-white me-3" to='/categoria/woman'>Women</Link>
+                                <Link className="nav-link text-white me-3" to='/category/woman'>Women</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-white me-3 " to='/categoria/man'>Men</Link>
+                                <Link className="nav-link text-white me-3 " to='/category/man'>Men</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-white me-3"  to='/categoria/kids' >Kids</Link>
+                                <Link className="nav-link text-white me-3"  to='/category/kids' >Kids</Link>
                             </li>
                         </ul>
                         <CartWidget/>
