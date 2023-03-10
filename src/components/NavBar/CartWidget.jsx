@@ -17,7 +17,7 @@ const Carrito = () => {
                         :
                         <p className="pe-1 nav text-white align-items-center">{quantity}</p>
                     }
-                    <Link to='/Cart' className=" nav-link text-white me-3">
+                    <Link to='/cartContainer' className=" nav-link text-white me-3">
                         <img src="/src/assets/img/001-comprar.png" alt="carrito-compra" />
                     </Link>
                 </li>

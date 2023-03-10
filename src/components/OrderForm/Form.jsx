@@ -1,33 +1,38 @@
-import { useState} from "react"
-import {useCartContext } from  "../../context/cartContext"
+import { useState } from "react"
+import { useCartContext } from "../../context/cartContext"
+import "../OrderForm/Form.css"
 import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore"
+import OrderResume from "../Cart/OrderResume"
 
 
-const FormCheckOut=(totalPrice)=> {
+
+
+const FormCheckOut = ({totalPrice, ChangeOrder}) => {
     const [dataForm, setDataForm] = useState({ name: '', surname: '', phone: '', email: '', emailvalidation: '' })
-    const {cartList, emptyCart}= useCartContext()
-
-
+    const { cartList, emptyCart } = useCartContext()
+    let idOrder = 0
+   
     // Generar orden
     const OrderGenerator = (e) => {
         e.preventDefault()
         const order = {}
-            order.buyer= dataForm,
-            order.products= cartList.map(({ id, name, price }) => ({ id, name, price })),
-            order.price= totalPrice
+        order.buyer = dataForm,
+            order.products = cartList.map(({ id, name, price }) => ({ id, name, price })),
+            order.price = totalPrice
 
-
-       //Insertar una order en firestore
+        //Insertar una order en firestore
         const db = getFirestore()
         const queryCollection = collection(db, 'Orders')
 
         addDoc(queryCollection, order)
-            .then(resp => console.log(resp))
+            .then(({id}) => { idOrder= id
+            console.log(idOrder)})
             .catch(err => console.log(err))
             .finally(() => {
                 emptyCart()
-                setDataForm({name: '', surname: '', phone: '', email: '', emailvalidation: ''})
-             })
+                setDataForm({ name: '', surname: '', phone: '', email: '', emailvalidation: '' })
+                handelInter()
+            })
     }
 
     const handlechange = (e) => {
@@ -38,20 +43,44 @@ const FormCheckOut=(totalPrice)=> {
         })
     }
 
+    const handelInter=()=>{
+        ChangeOrder(idOrder)
+    }
+
+
     return (
-        <div className="row my-4">
-            <div className="col-12 col-lg-6">
-                <form className="border p-2" onSubmit={OrderGenerator}>
-                    <input className="form-control mb-3" type="text" placeholder="Name" name='name' onChange={handlechange} value={dataForm.name} required />
-                    <input className="form-control mb-3" type="text" placeholder="Surname" name='surname' onChange={handlechange} value={dataForm.surname} required />
-                    <input className="form-control mb-3" type="text" placeholder="Phone" name='phone' onChange={handlechange} value={dataForm.phone} required />
-                    <input className="form-control mb-3" type="text" placeholder="Email" name='email' onChange={handlechange} value={dataForm.email} required />
-                    <input className="form-control mb-3" type="text" placeholder="Repeat Email" name='emailvalidation' onChange={handlechange} value={dataForm.emailvalidation} required />
-                    <button className="btn btn-dark mt-3 px-4 fw-bold" type="submit">BUY</button>
-                </form>
+        <div className="container cart__list__wrap">
+            <div className="row my-4 mx-0 px-0 container">
+                <h3 className="bg-dark text-bg-dark mt-4 mx-0 py-2 form__title">Complete your infomation to make an order</h3>
+                <div className="col-12">
+                    <form className="border p-2" onSubmit={OrderGenerator}>
+                        <div className="row">
+                            <div className="col-12 col-lg-4">
+                                <input className="form-control mb-3" type="text" placeholder="Name" name='name' onChange={handlechange} value={dataForm.name} required />
+                            </div>
+                            <div className="col-12 col-lg-4">
+                                <input className="form-control mb-3" type="text" placeholder="Surname" name='surname' onChange={handlechange} value={dataForm.surname} required />
+                            </div>
+                            <div className="col-12 col-lg-4">
+                                <input className="form-control mb-3" type="text" placeholder="Phone" name='phone' onChange={handlechange} value={dataForm.phone} required />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-12 col-lg-6">
+                                <input className=" col-6 form-control mb-3" type="text" placeholder="Email" name='email' onChange={handlechange} value={dataForm.email} required />
+                            </div>
+                            <div className="col-12 col-lg-6">
+                                <input className=" col-6 form-control mb-3" type="text" placeholder="Repeat Email" name='emailvalidation' onChange={handlechange} value={dataForm.emailvalidation} required />
+                            </div>
+                        </div>
+                        <button className="btn btn-dark mt-3 px-4 fw-bold" type="submit" >Make an Order</button>
+                    </form>
+                </div>
             </div>
         </div>
     )
 }
 
 export default FormCheckOut
+
+/// onClick={handelInter}

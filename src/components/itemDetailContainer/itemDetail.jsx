@@ -10,7 +10,7 @@ const DetailButtons= ()=> {
         <>
         <div className="card border-0">
         <div className="row mb-2 text-center">
-            <Link className="col px-0" to='/cart' >
+            <Link className="col px-0" to='/CartContainer' >
                 <button className="btn btn-outline-dark" >Go to Cart</button>
             </Link>
             <Link className="col px-0" to='/' >

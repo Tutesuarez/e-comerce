@@ -19,7 +19,6 @@ export const CartContextProvider=({children})=>{
             if (isItemFound) {
                 return cartList.map((prod)=>{
                     if (prod.id===product.id) {
-                        console.log('cantidad:', prod.quantity);
                         return {...prod, quantity: prod.quantity+product.quantity}
                     } else {
                         return prod

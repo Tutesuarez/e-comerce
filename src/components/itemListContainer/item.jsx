@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom"
-import { useCartContext } from "../../context/cartContext";
 import '../itemListContainer/itemListContainer.css';
 
 
 const Item = ({ prod}) => {
-
-    const{addToCart}=useCartContext()
 
     return (
         <div className="col">
@@ -18,7 +15,6 @@ const Item = ({ prod}) => {
                         <div className="btn-group">
                             <Link className="btn btn-dark" to={`/detail/${prod.id}`}>Details</Link>
                         </div>
-                        <Link className="btn btn-outline-dark" onClick={()=>addToCart[{product}]}>Add</Link>
                     </div>
                 </div>
             </div>
