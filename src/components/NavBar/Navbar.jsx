@@ -1,10 +1,25 @@
 
-import { Link} from "react-router-dom"
+import { Link } from "react-router-dom"
+import { collection, getDocs, getFirestore } from "firebase/firestore"
+import { useState,useEffect } from "react"
 import CartWidget from "./CartWidget"
+import MenuRender from "./MenuRender"
 import "../NavBar/NavBar.css"
 
+
+/*Get del menu desde firestore + renderizacion de navbar mediante componenetes CartWidget y MenuRender */ 
 const Navbar = () => {
-    return(
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        const db = getFirestore()
+        const queryCat = collection(db, 'Categories')
+
+        getDocs(queryCat)
+            .then(respCollection => setCategories(respCollection.docs.map(prod => ({ id: prod.id, ...prod.data() }))))
+            .catch(err => console.error(err))
+    })
+    return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div className="container-fluid ">
@@ -17,24 +32,18 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse text-uppercase" id="navbarSupportedContent">
                         <ul className="navbar-nav nav-tabs mb-2 mb-lg-0 ms-auto">
-                            <li className="nav-item ">
-                                <Link className="nav-link text-white me-3"  to='/home'>Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link text-white me-3" to='/category/woman'>Women</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link text-white me-3 " to='/category/man'>Men</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link text-white me-3"  to='/category/kids' >Kids</Link>
-                            </li>
+                            {
+                                categories.map(cat =>
+                                    <MenuRender key={cat.id} cat={cat}/>
+                                )
+                            }
                         </ul>
-                        <CartWidget/>
+                        <CartWidget />
                     </div>
                 </div>
             </nav>
         </>
     )
 }
+
 export default Navbar

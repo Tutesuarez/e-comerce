@@ -1,13 +1,13 @@
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import Spinner from "../itemListContainer/loadingSpinner";
-import ItemDetail from "./itemDetail";
-import { doc, getDoc, getFirestore} from 'firebase/firestore'
+import Spinner from "../itemListContainer/loadingSpinner"
+import ItemDetail from "./itemDetail"
 
-export const ItemDetailContainer = () => {
+const ItemDetailContainer = () => {
     const [product, setProduct] = useState([]);
     const [loanding, setLoading] = useState(true);
-    const {idProduct} = useParams();
+    const { idProduct } = useParams();
 
     useEffect(() => {
         const db = getFirestore()
@@ -18,6 +18,7 @@ export const ItemDetailContainer = () => {
             .finally(() => setLoading(false))
     }, [idProduct])
 
+
     return (
         <>
             {loanding ? <Spinner /> : <ItemDetail product={product} />}
@@ -25,4 +26,6 @@ export const ItemDetailContainer = () => {
         </>
     )
 }
+
+export default ItemDetailContainer
 

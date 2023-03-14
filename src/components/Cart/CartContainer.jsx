@@ -6,17 +6,17 @@ import { useState } from "react";
 import OrderResume from "./OrderResume"
 
 
-const CartContainer =()=>{
+const CartContainer = () => {
     const { cartList } = useCartContext()
     const [showForm, setShowForm] = useState(false)
-    const [showOrder, setShowOrder]=useState(true)
-    const [idOrder, setIdOrder]=useState('')
+    const [showOrder, setShowOrder] = useState(true)
+    const [idOrder, setIdOrder] = useState('')
 
     const totalPrice = cartList.reduce(
         (acc, curr) => acc + curr.quantity * curr.price, 0
     )
 
-    function ChangeShowFormParams(){
+    function ChangeShowFormParams() {
         setShowForm(true)
     }
 
@@ -26,19 +26,19 @@ const CartContainer =()=>{
     }
 
 
-    if(showOrder){
-        return(
-        <>
-            <Cart totalPrice={totalPrice} ChangeShowFormParams={ChangeShowFormParams}/>
-            {
-                showForm? <FormCheckOut totalPrice={totalPrice} ChangeOrder={ChangeOrder} /> : <></>
-            }
-        </>)
-    }else{
-        return(
-            <OrderResume idOrder={idOrder}/>
+    if (showOrder) {
+        return (
+            <>
+                <Cart totalPrice={totalPrice} ChangeShowFormParams={ChangeShowFormParams} />
+                {
+                    showForm ? <FormCheckOut totalPrice={totalPrice} ChangeOrder={ChangeOrder} /> : <></>
+                }
+            </>)
+    } else {
+        return (
+            <OrderResume idOrder={idOrder} />
         )
-    }          
+    }
 }
 
 export default CartContainer

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom"
-import '../itemListContainer/itemListContainer.css';
+import '../itemListContainer/itemListContainer.css'
 
-
-const Item = ({ prod}) => {
+const Item = ({ prod }) => {
 
     return (
         <div className="col">

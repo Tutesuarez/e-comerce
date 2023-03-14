@@ -1,6 +1,6 @@
+import { memo } from "react";
 import Item from "./item";
 import '../itemListContainer/itemListContainer.css';
-import { memo } from "react";
 
 const ItemList = memo(({ products }) => {
     return (

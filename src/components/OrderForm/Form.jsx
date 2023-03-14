@@ -1,23 +1,21 @@
+import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore"
 import { useState } from "react"
 import { useCartContext } from "../../context/cartContext"
 import "../OrderForm/Form.css"
-import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore"
-import OrderResume from "../Cart/OrderResume"
 
 
-
-
-const FormCheckOut = ({totalPrice, ChangeOrder}) => {
+const FormCheckOut = ({ totalPrice, ChangeOrder }) => {
     const [dataForm, setDataForm] = useState({ name: '', surname: '', phone: '', email: '', emailvalidation: '' })
     const { cartList, emptyCart } = useCartContext()
     let idOrder = 0
-   
+
     // Generar orden
     const OrderGenerator = (e) => {
         e.preventDefault()
+        
         const order = {}
         order.buyer = dataForm,
-            order.products = cartList.map(({ id, name, price }) => ({ id, name, price })),
+            order.products = cartList.map(({ id, name, price, quantity }) => ({ id, name, price, quantity })),
             order.price = totalPrice
 
         //Insertar una order en firestore
@@ -25,8 +23,7 @@ const FormCheckOut = ({totalPrice, ChangeOrder}) => {
         const queryCollection = collection(db, 'Orders')
 
         addDoc(queryCollection, order)
-            .then(({id}) => { idOrder= id
-            console.log(idOrder)})
+            .then(({ id }) => { idOrder = id })
             .catch(err => console.log(err))
             .finally(() => {
                 emptyCart()
@@ -41,11 +38,21 @@ const FormCheckOut = ({totalPrice, ChangeOrder}) => {
             ...dataForm,
             [e.target.name]: e.target.value
         })
+        EmailValidation()
     }
 
-    const handelInter=()=>{
+    const handelInter = () => {
         ChangeOrder(idOrder)
     }
+
+    const EmailValidation = () => {
+        if (dataForm.email === dataForm.emailvalidation && dataForm.email !== '' && dataForm.email.includes('@')) {
+            return false
+        } else {
+            return ('The email does not match')
+        }
+    }
+    const errorMessage = EmailValidation(dataForm)
 
 
     return (
@@ -73,7 +80,8 @@ const FormCheckOut = ({totalPrice, ChangeOrder}) => {
                                 <input className=" col-6 form-control mb-3" type="text" placeholder="Repeat Email" name='emailvalidation' onChange={handlechange} value={dataForm.emailvalidation} required />
                             </div>
                         </div>
-                        <button className="btn btn-dark mt-3 px-4 fw-bold" type="submit" >Make an Order</button>
+                        <p>{errorMessage}</p>
+                        <button className="btn btn-dark mt-3 px-4 fw-bold" type="submit" disabled={errorMessage}>Make an Order</button>
                     </form>
                 </div>
             </div>
@@ -83,4 +91,3 @@ const FormCheckOut = ({totalPrice, ChangeOrder}) => {
 
 export default FormCheckOut
 
-/// onClick={handelInter}
