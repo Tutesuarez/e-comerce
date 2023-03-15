@@ -15,7 +15,7 @@ Finally, you can choose to place the purchase order, where the buyer's data will
 The project is considered finished, so it will not have other versions or updates.
 
 ## Try the app online:
-amazing-tarsier-dd09b8.netlify.app
+https://fashionreact.netlify.app/
 
 ## Features
 For the realization of this project we used:
