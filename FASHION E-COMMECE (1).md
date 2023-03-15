@@ -1,7 +1,7 @@
 # FASHION E-COMMECE
 ## _Final project of the React course_
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/Tutesuarez)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7887970b-17c7-49f3-ae36-12e8e51bf407/deploy-status)](https://app.netlify.com/sites/amazing-tarsier-dd09b8/deploys)
 
 ## Description
 The project aims at the representation and functionality of a shopping cart with the aim of meeting the objectives presented during the course of the training in React.
@@ -15,7 +15,7 @@ Finally, you can choose to place the purchase order, where the buyer's data will
 The project is considered finished, so it will not have other versions or updates.
 
 ## Try the app online:
-Aqui colocamos el link de netlify
+amazing-tarsier-dd09b8.netlify.app
 
 ## Features
 For the realization of this project we used:
