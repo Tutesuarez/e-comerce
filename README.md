@@ -1,7 +1,7 @@
 # FASHION E-COMMECE
 ## _Final project of the React course_
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/035309dd-5134-4c65-bbfd-0e2de08188ca/deploy-status)](https://app.netlify.com/sites/melodious-profiterole-a0b57d/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0644e968-7ab6-4938-a5d9-3d9c59fb72d0/deploy-status)](https://app.netlify.com/sites/fashionreact/deploys)
 
 ## Description
 The project aims at the representation and functionality of a shopping cart with the aim of meeting the objectives presented during the course of the training in React.
