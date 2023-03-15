@@ -36,7 +36,7 @@ const OrderResume = ({ idOrder }) => {
                     :
                     <div>
                         <div className="container cart__list__wrap">
-                            <OrderbuyerResume buyer={buyer}/>
+                            <OrderbuyerResume buyer={buyer} />
                             <table className="table w-100">
                                 <thead className="text-center">
                                     <tr>
@@ -47,7 +47,12 @@ const OrderResume = ({ idOrder }) => {
                                         <th scope="col">Sub Total</th>
                                     </tr>
                                 </thead>
-                                <OrderListResume products={products}/>
+                                {
+                                    products.map(prod =>
+                                        <OrderListResume key={prod.id} prod={prod} />
+
+                                    )
+                                }
                             </table>
                             <div className="bg-dark  d-flex justify-content-between sub__total__bar mb-5 mx-0">
                                 <p className="text-white my-1 py-1 px-3 fw-bold">Total</p>

@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore"
+import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { useState } from "react"
 import { useCartContext } from "../../context/cartContext"
 import "../OrderForm/Form.css"
