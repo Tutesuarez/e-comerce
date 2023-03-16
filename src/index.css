@@ -7,10 +7,17 @@
 
 @font-face {
   font-family: "MADE TOMMY ExtraBold";
-  src: url("../src/assets/fonts/MADE\ TOMMY\ ExtraBold.otf");
+  src: url("../src/assets/fonts/MADE\ TOMMY\ ExtraBold.ttf");
   font-style: normal;
   font-weight: 700;
 }
+@font-face {
+  font-family: "MADE TOMMY ExtraBold";
+  src: url("../src/assets/fonts/MADE TOMMY ExtraBold.ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+
 
 /*----   Nav Bar -----*/
 
