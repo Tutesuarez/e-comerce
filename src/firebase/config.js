@@ -6,12 +6,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD86g-jo7V0quACtnX1glVuCP86uVc28wo",
-  authDomain: "fashion-ecomerce.firebaseapp.com",
-  projectId: "fashion-ecomerce",
-  storageBucket: "fashion-ecomerce.appspot.com",
-  messagingSenderId: "657718174770",
-  appId: "1:657718174770:web:31827e9f2d7581e90a082b"
+  apiKey: "AIzaSyAPXZDuGeLGW6wkHDY-IW4O4dShvAglVm4",
+  authDomain: "fashion-392610.firebaseapp.com",
+  projectId: "fashion-392610",
+  storageBucket: "ashion-392610.appspot.com",
+  messagingSenderId: "327888129436",
+  appId: "1:327888129436:web:e54a80727649870d06cc59"
 };
 
 // Initialize Firebase
