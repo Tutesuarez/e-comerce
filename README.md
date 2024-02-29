@@ -4,7 +4,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0644e968-7ab6-4938-a5d9-3d9c59fb72d0/deploy-status)](https://app.netlify.com/sites/fashionreact/deploys)
 
 ## Description
-The project aims at the representation and functionality of a shopping cart with the aim of meeting the objectives presented during the course of the training in React.
+The project aims at the representation and functionality of a SPA(single page application) shopping cart application, running with a Firestore Database with the aim of meeting the objectives presented during the course of the training in React.
 The proyect start from the main page, offering all the products in the portfolio, as well as having the possibility of searching by _WOMEN, MEN and KIDS_  sections, where from there we will have the possibility of accessing the details of each product, being able to add them to the list of purchases and choosing the quantity of each product that you want to add. also giving the possibility to continue shopping or go directly to the shopping cart to place a purchase order.
 once inside the cart we can view all the products listed, detailing the quantity of each product, price per unit, subtotal and the total amount of the purchase order. having the possibility of removing units of each product or emptying the shopping cart.
 Finally, you can choose to place the purchase order, where the buyer's data will be requested and you will obtain a summary of the purchase order with an order code, all connected to a Firestore database.
